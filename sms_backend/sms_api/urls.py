@@ -1,0 +1,53 @@
+from django.urls import path
+from django.urls import path
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from .views import (
+    UserListCreateAPIView,
+    UserRetrieveUpdateDestroyAPIView,
+    RoleListCreateAPIView,
+    RoleRetrieveUpdateDestroyAPIView,
+    DeviceListCreateAPIView,
+    DeviceRetrieveUpdateDestroyAPIView,
+    MessageListCreateAPIView,
+    MessageRetrieveUpdateDestroyAPIView,
+    ServiceListCreateAPIView,
+    ServiceRetrieveUpdateDestroyAPIView,
+    ServicesTeamListCreateAPIView,
+    HistoryListCreateAPIView,
+    ServicesTeamRetrieveUpdateDestroyAPIView,
+    HistoryRetrieveUpdateDestroyAPIView,
+    PermissionListCreateAPIView,
+    PermissionRetrieveUpdateDestroyAPIView,
+    UserLoginAPIView,
+    UserSignupAPIView,
+    ServicesTeamLoginAPIView,
+    ServicesTeamSignupAPIView,
+)
+
+urlpatterns = [
+    path('users/', UserListCreateAPIView.as_view(), name='user-list-create'),
+    path('users/<int:pk>/', UserRetrieveUpdateDestroyAPIView.as_view(), name='user-retrieve-update-destroy'),
+    path('roles/', RoleListCreateAPIView.as_view(), name='role-list-create'),
+    path('roles/<int:pk>/', RoleRetrieveUpdateDestroyAPIView.as_view(), name='role-retrieve-update-destroy'),
+    path('device/', DeviceListCreateAPIView.as_view(), name='device-list-create'),
+    path('device/<int:pk>/', DeviceRetrieveUpdateDestroyAPIView.as_view(), name='device-retrieve-update-destroy'),
+    path('messages/', MessageListCreateAPIView.as_view(), name='message-list-create'),
+    path('messages/<int:pk>/', MessageRetrieveUpdateDestroyAPIView.as_view(), name='message-retrieve-update-destroy'),
+    path('services/', ServiceListCreateAPIView.as_view(), name='service-list-create'),
+    path('services/<int:pk>/', ServiceRetrieveUpdateDestroyAPIView.as_view(), name='service-retrieve-update-destroy'),
+    path('servicesteam/', ServicesTeamListCreateAPIView.as_view(), name='service-team-list-create'),
+    path('servicesteam/<int:pk>/', ServicesTeamRetrieveUpdateDestroyAPIView.as_view(), name='service-team-retrieve-update-destroy'),
+    path('history/', HistoryListCreateAPIView.as_view(), name='history-list-create'),
+    path('history/<int:pk>/', HistoryRetrieveUpdateDestroyAPIView.as_view(), name='history-retrieve-update-destroy'),
+    path('permissions/', PermissionListCreateAPIView.as_view(), name='permission-list-create'),
+    path('permissions/<int:pk>/', PermissionRetrieveUpdateDestroyAPIView.as_view(), name='permission-retrieve-update-destroy'),
+    path('users/login/', UserLoginAPIView.as_view(), name='user-login'),
+    path('users/signup/', UserSignupAPIView.as_view(), name='user-signup'),
+    path('servicesteam/login/', ServicesTeamLoginAPIView.as_view(), name='service-team-login'),
+    path('servicesteam/signup/', ServicesTeamSignupAPIView.as_view(), name='service-team-signup'),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]
